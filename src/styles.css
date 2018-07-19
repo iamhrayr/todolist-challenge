@@ -1,0 +1,30 @@
+.container {
+    margin-top: 40px;
+}
+
+.ui.form {
+    margin-bottom: 30px;
+}
+
+.checkbox.done {
+    opacity: .3;
+    text-decoration: line-through;
+}
+
+.todo-item button {
+    background: transparent;
+    border: none;
+    float: right;
+    cursor: pointer;
+    color: #db2828;
+    opacity: 0;
+    transition: opacity .4s;
+}
+
+.todo-item:hover button {
+    opacity: 1;
+}
+
+.loader-wrap {
+    min-height: 80px;
+}
