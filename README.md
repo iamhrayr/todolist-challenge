@@ -1,7 +1,4 @@
 Todolist Challenge
-=============================================
-
-Preparations
 ---------------------------------------------
 
 run `npm install` or `yarn install` or simply `yarn` to install all dependencies 
