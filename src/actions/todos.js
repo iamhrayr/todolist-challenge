@@ -3,11 +3,11 @@ import * as actionTypes from './types';
 
 export const getTodos = () => {
     return dispatch => {
-        dispatch(receiveTodoRequest());
+        dispatch(receiveTodosRequest());
         axios
             .get('/')
             .then(res => {
-                dispatch(receiveTodoSuccess(res.data));
+                dispatch(receiveTodosSuccess(res.data));
             })
     };
 };
@@ -17,11 +17,11 @@ export const addTodo = todo => {
         const oldTodoList = getState().todos.data;
         const newTodoList = [...oldTodoList, todo];
 
-        dispatch(receiveTodoRequest());
+        dispatch(receiveTodosRequest());
         return axios
             .put('/', newTodoList)
             .then(res => {
-                return dispatch(receiveTodoSuccess(res.data));
+                return dispatch(receiveTodosSuccess(res.data));
             })
     };
 };
@@ -36,11 +36,11 @@ export const toggleTodo = todoId => {
             return { ...todo, done: !todo.done };
         });
 
-        dispatch(receiveTodoRequest());
+        dispatch(receiveTodosRequest());
         return axios
             .put('/', newTodoList)
             .then(res => {
-                return dispatch(receiveTodoSuccess(res.data));
+                return dispatch(receiveTodosSuccess(res.data));
             })
     };
 };
@@ -52,21 +52,21 @@ export const removeTodo = todoId => {
             return todo.id !== todoId;
         });
         
-        dispatch(receiveTodoRequest());
+        dispatch(receiveTodosRequest());
         return axios
             .put('/', newTodoList)
             .then(res => {
-                return dispatch(receiveTodoSuccess(res.data));
+                return dispatch(receiveTodosSuccess(res.data));
             })
     };
 };
 
-function receiveTodoRequest() {
+function receiveTodosRequest() {
     return {
         type: actionTypes.RECEIVE_TODOS_REQUEST
     };
 }
-function receiveTodoSuccess(todos) {
+function receiveTodosSuccess(todos) {
     return {
         type: actionTypes.RECEIVE_TODOS_SUCCESS,
         todos
